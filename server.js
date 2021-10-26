@@ -8,6 +8,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-const port = process.env.port || 5000
+const port = process.env.port || 4545
 
-app.listen(5000, () => console.log(`Over ${port}`))
+app.listen(4545, () => console.log(`On ${port}`))
