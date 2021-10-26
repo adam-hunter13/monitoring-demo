@@ -10,4 +10,4 @@ app.get('/', (req, res) => {
 
 const port = process.env.port || 4545
 
-app.listen(4545, () => console.log(`On ${port}`))
+app.listen(port, () => console.log(`On ${port}`))
