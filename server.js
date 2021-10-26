@@ -12,13 +12,14 @@ const app = express()
 
 app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
+    rollbar.info('html file served successfully')
 })
 
 let students =[]
 
 app.post('/api/student', (req, res) => {
     const {name} = req.body
-    name = name.trip()
+    name = name.trim()
 
     students.push(name)
     rollbar.log('Student added successfully', {author: 'Adam', type: 'manual entry'})
