@@ -14,6 +14,19 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
+let students =[]
+
+app.post('/api/student', (req, res) => {
+    const {name} = req.body
+    name = name.trip()
+
+    students.push(name)
+    rollbar.log('Student added successfully', {author: 'Adam', type: 'manual entry'})
+    res.status(200).send(students)
+})
+
+app.use(rollbar.errorHandler())
+
 const port = process.env.PORT || 4545
 
 app.listen(port, () => console.log(`Take us to warp ${port}!`))
